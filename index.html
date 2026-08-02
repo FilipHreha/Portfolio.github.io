@@ -26,23 +26,32 @@
             scroll-behavior: smooth;
         }
 
+        /* Hlavné pozadie webu - čistá tmavá farba s jemnou bodkovanou sieťou */
         body {
             background-color: var(--bg-black);
-            background-image: 
-                radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0),
-                url('background2.webp');
-            background-size: 28px 28px, cover;
-            background-position: center;
-            background-repeat: repeat, no-repeat;
-            background-attachment: fixed;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
+            background-size: 28px 28px;
+            background-repeat: repeat;
             color: var(--text-white);
             font-family: 'Space Grotesk', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* --- HORNA LIŠTA A LANGUAGE SWITCHER --- */
+        /* --- OBAL PRE HERO SEKCIU S OBRÁZKOVÝM POZADÍM --- */
+        .hero-section-wrapper {
+            position: relative;
+            width: 100%;
+            /* Plynulý prechod z priehľadného obalu do úplnej tmy na spodku */
+            background-image: 
+                linear-gradient(to bottom, rgba(8, 8, 10, 0.2) 0%, rgba(8, 8, 10, 0.7) 70%, var(--bg-black) 100%),
+                url('background2.webp');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+        }
 
+        /* --- HORNA LIŠTA A LANGUAGE SWITCHER --- */
         .top-bar {
             width: 100%;
             padding: 20px 40px;
@@ -127,7 +136,7 @@
             min-height: 90vh;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 140px 20px 60px;
+            padding: 140px 20px 80px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
@@ -295,12 +304,13 @@
             gap: 8px;
         }
 
-        /* --- SEKCIA FOTOTVORBA (MASONRY LAYOUT) --- */
+        /* --- SEKCIA FOTOTVORBA (ČISTÉ TMAVÉ POZADIE) --- */
         .showcase-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 100px 20px;
-            border-top: 1px solid var(--border-light);
+            padding: 60px 20px 100px;
+            position: relative;
+            z-index: 2;
         }
 
         .section-header-centered {
@@ -396,31 +406,7 @@
             z-index: 2;
         }
 
-        .upcoming-category {
-            margin-top: 80px;
-            padding: 50px 20px;
-            border: 1px dashed var(--border-light);
-            border-radius: 16px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .upcoming-category h3 {
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .upcoming-category p {
-            font-size: 12px;
-            color: rgba(128, 133, 144, 0.6);
-        }
-
         /* --- FOOTER --- */
-
         .bottom-bar {
             width: 100%;
             padding: 30px 40px;
@@ -435,7 +421,6 @@
         }
 
         /* --- RESPONSIVITA --- */
-
         @media (max-width: 900px) {
             .side-text { display: none; }
             .top-bar { padding: 15px 20px; }
@@ -485,53 +470,55 @@
     <div class="side-text side-left">+ POETRY IN DESIGN</div>
     <div class="side-text side-right">VISUAL STORYTELLER +</div>
 
-    <!-- Hero Sekcia s Fotkou -->
-    <main class="hero-container">
-        <div class="hero-content">
-            <h1 class="main-title" id="txt-title">
-                Vi<span class="fancy-char">t</span>ajte
-            </h1>
+    <!-- HERO SEKCIA OBBALENÁ V POZADÍ -->
+    <header class="hero-section-wrapper">
+        <main class="hero-container">
+            <div class="hero-content">
+                <h1 class="main-title" id="txt-title">
+                    Vi<span class="fancy-char">t</span>ajte
+                </h1>
 
-            <p class="about-snippet" id="txt-about">
-                Zameriavam sa primárne na <strong>fotenie áut</strong>, ale nemám problém s akýmkoľvek <strong>iným štýlom alebo žánrom</strong> – rád nafotím aj iné projekty podľa tvojich predstáv. Ak máš záujem o fotenie áut alebo hľadáš fotografa pre svoj projekt, stačí mi napísať na mail alebo na sociálne siete a dohodneme sa.
-            </p>
+                <p class="about-snippet" id="txt-about">
+                    Zameriavam sa primárne na <strong>fotenie áut</strong>, ale nemám problém s akýmkoľvek <strong>iným štýlom alebo žánrom</strong> – rád nafotím aj iné projekty podľa tvojich predstáv. Ak máš záujem o fotenie áut alebo hľadáš fotografa pre svoj projekt, stačí mi napísať na mail alebo na sociálne siete a dohodneme sa.
+                </p>
 
-            <div class="cta-buttons">
-                <a href="mailto:filllip.hh@gmail.com" class="btn-action btn-primary">
-                    <span>✉</span> <span id="txt-btn-mail">Napíš mi</span>
-                </a>
-                <a href="https://www.instagram.com/hubvroomvroom/" target="_blank" rel="noopener" class="btn-action">
-                    <span>↗</span> Instagram
-                </a>
-            </div>
-
-            <div class="hero-footer-info">
-                <div>
-                    <span style="color: var(--text-muted);" id="txt-ver-label">VERZIA /</span>
-                    <span style="color: var(--accent-green); font-weight: 600;">2026</span>
+                <div class="cta-buttons">
+                    <a href="mailto:filllip.hh@gmail.com" class="btn-action btn-primary">
+                        <span>✉</span> <span id="txt-btn-mail">Napíš mi</span>
+                    </a>
+                    <a href="https://www.instagram.com/hubvroomvroom/" target="_blank" rel="noopener" class="btn-action">
+                        <span>↗</span> Instagram
+                    </a>
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span class="arrow-circle">↗</span>
+
+                <div class="hero-footer-info">
                     <div>
-                        <div style="color: var(--text-muted); font-size: 10px;" id="txt-by-label">DESIGN EXECUTED</div>
-                        <div class="designer-name"><span style="font-style: italic; font-weight: 300;">by</span> Filip Hreha</div>
+                        <span style="color: var(--text-muted);" id="txt-ver-label">VERZIA /</span>
+                        <span style="color: var(--accent-green); font-weight: 600;">2026</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="arrow-circle">↗</span>
+                        <div>
+                            <div style="color: var(--text-muted); font-size: 10px;" id="txt-by-label">DESIGN EXECUTED</div>
+                            <div class="designer-name"><span style="font-style: italic; font-weight: 300;">by</span> Filip Hreha</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="portrait-wrapper">
-            <div class="portrait-card">
-                <img src="profil.png" class="portrait-img">
-                <div class="portrait-tag">
-                    <span style="width: 6px; height: 6px; background: var(--accent-green); border-radius: 50%;"></span>
-                    <span id="txt-photo-tag">AUTOR / FOTOGRAF</span>
+            <div class="portrait-wrapper">
+                <div class="portrait-card">
+                    <img src="profil.png" class="portrait-img" alt="Profil">
+                    <div class="portrait-tag">
+                        <span style="width: 6px; height: 6px; background: var(--accent-green); border-radius: 50%;"></span>
+                        <span id="txt-photo-tag">AUTOR / FOTOGRAF</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </header>
 
-    <!-- SEKCIA FOTOTVORBA -->
+    <!-- SEKCIA FOTOTVORBA (ČISTÉ POZADIE) -->
     <section class="showcase-container">
         
         <div class="section-header-centered">
@@ -544,105 +531,110 @@
         <div class="photo-grid">
             <div class="photo-item">
                 <img src="photos/cars/IMG_0007.jpg" loading="lazy" alt="Auto 01">
-                <div class="photo-number">01 / 24</div>
+                <div class="photo-number">01 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_0170.png" loading="lazy" alt="Auto 02">
-                <div class="photo-number">02 / 24</div>
+                <div class="photo-number">02 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_0199.jpg" loading="lazy" alt="Auto 03">
-                <div class="photo-number">03 / 24</div>
+                <div class="photo-number">03 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_0205.jpg" loading="lazy" alt="Auto 04">
-                <div class="photo-number">04 / 24</div>
+                <div class="photo-number">04 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_0850.jpg" loading="lazy" alt="Auto 05">
-                <div class="photo-number">05 / 24</div>
+                <div class="photo-number">05 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_0877.jpg" loading="lazy" alt="Auto 06">
-                <div class="photo-number">06 / 24</div>
+                <div class="photo-number">06 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_0909.jpg" loading="lazy" alt="Auto 07">
-                <div class="photo-number">07 / 24</div>
+                <div class="photo-number">07 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1130.jpg" loading="lazy" alt="Auto 08">
-                <div class="photo-number">08 / 24</div>
+                <div class="photo-number">08 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1152.jpg" loading="lazy" alt="Auto 09">
-                <div class="photo-number">09 / 24</div>
+                <div class="photo-number">09 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1167.jpg" loading="lazy" alt="Auto 10">
-                <div class="photo-number">10 / 24</div>
+                <div class="photo-number">10 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1168.jpg" loading="lazy" alt="Auto 11">
-                <div class="photo-number">11 / 24</div>
+                <div class="photo-number">11 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1206.jpg" loading="lazy" alt="Auto 12">
-                <div class="photo-number">12 / 24</div>
+                <div class="photo-number">12 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1242.jpg" loading="lazy" alt="Auto 13">
-                <div class="photo-number">13 / 24</div>
+                <div class="photo-number">13 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1405.jpg" loading="lazy" alt="Auto 14">
-                <div class="photo-number">14 / 24</div>
+                <div class="photo-number">14 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1463.jpg" loading="lazy" alt="Auto 15">
-                <div class="photo-number">15 / 24</div>
+                <div class="photo-number">15 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1472.jpg" loading="lazy" alt="Auto 16">
-                <div class="photo-number">16 / 24</div>
+                <div class="photo-number">16 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1554.jpg" loading="lazy" alt="Auto 17">
-                <div class="photo-number">17 / 24</div>
+                <div class="photo-number">17 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1557.jpg" loading="lazy" alt="Auto 18">
-                <div class="photo-number">18 / 24</div>
+                <div class="photo-number">18 / 20</div>
             </div>
 
             <div class="photo-item">
-                <img src="photos/cars/IMG_1785.jpg" loading="lazy" alt="Auto 19">
-                <div class="photo-number">19 / 24</div>
+                <img src="photos/cars/IMG_1787.jpg" loading="lazy" alt="Auto 19">
+                <div class="photo-number">19 / 20</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1818.jpg" loading="lazy" alt="Auto 20">
-                <div class="photo-number">20 / 24</div>
+                <div class="photo-number">20 / 20</div>
             </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="bottom-bar">
+        <div>© FILIP HREHA</div>
+    </footer>
 
 </body>
 </html>
