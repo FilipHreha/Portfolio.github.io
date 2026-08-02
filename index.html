@@ -336,16 +336,24 @@
             font-weight: 600;
         }
 
+        /* KLIKATEĽNÁ KATEGÓRIA */
         .category-title {
             font-size: 20px;
             font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin: 60px 0 30px;
+            margin: 40px 0 20px;
             display: flex;
             align-items: center;
             gap: 15px;
             color: var(--text-white);
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        .category-title:hover {
+            color: var(--accent-green);
         }
 
         .category-title::after {
@@ -353,11 +361,37 @@
             flex: 1;
             height: 1px;
             background: var(--border-light);
+            transition: background-color 0.3s ease;
         }
 
+        .category-title:hover::after {
+            background: rgba(0, 255, 102, 0.3);
+        }
+
+        /* INDIKÁTOR STAVU ROZBALENIA (+ / -) */
+        .category-title::before {
+            content: '+';
+            font-family: monospace;
+            font-size: 18px;
+            color: var(--accent-green);
+            margin-right: -5px;
+            transition: transform 0.3s ease;
+        }
+
+        .category-title.active::before {
+            content: '−';
+        }
+
+        /* SKRYTÁ MASONRY GRID (rozbalí sa až po kliknutí) */
         .photo-grid {
+            display: none;
             column-count: 3;
             column-gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .photo-grid.active {
+            display: block;
         }
 
         .photo-item {
@@ -368,6 +402,7 @@
             border: 1px solid var(--border-light);
             border-radius: 12px;
             overflow: hidden;
+            min-height: 150px;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
@@ -497,132 +532,79 @@
         </div>
 
         <!-- 01 / AUTOMOBILY -->
-        <div class="category-title" id="cat-cars-title">01 / AUTOMOBILY</div>
+        <div class="category-title" id="cat-cars-title" onclick="toggleCategory(this)">01 / AUTOMOBILY</div>
         <div class="photo-grid">
-            <div class="photo-item">
-                <img src="photos/cars/IMG_0007.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_0170.png" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_0199.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_0205.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_0850.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_0877.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_0909.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1130.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1152.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1167.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1168.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1206.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1242.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1405.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1463.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1472.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1554.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1557.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1785.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1818.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1880.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_9984.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_9991.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/cars/IMG_9996.jpg" loading="lazy">
-            </div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_0007.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_0170.png" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_0199.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_0205.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_0850.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_0877.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_0909.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1130.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1152.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1167.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1168.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1206.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1242.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1405.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1463.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1472.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1554.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1557.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1785.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1818.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_1880.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_9984.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_9991.jpg" alt="Automobil"></div>
+            <div class="photo-item"><img data-src="photos/cars/IMG_9996.jpg" alt="Automobil"></div>
         </div>
 
         <!-- 02 / ZVIERATÁ -->
-        <div class="category-title" id="cat-animals-title">02 / ZVIERATÁ</div>
+        <div class="category-title" id="cat-animals-title" onclick="toggleCategory(this)">02 / ZVIERATÁ</div>
         <div class="photo-grid">
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9063.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9067.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9077.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9083.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9096.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9098.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9101.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/animals/IMG_9104.jpg" loading="lazy">
-            </div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9063.jpg" alt="Zviera"></div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9067.jpg" alt="Zviera"></div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9077.jpg" alt="Zviera"></div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9083.jpg" alt="Zviera"></div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9096.jpg" alt="Zviera"></div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9098.jpg" alt="Zviera"></div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9101.jpg" alt="Zviera"></div>
+            <div class="photo-item"><img data-src="photos/animals/IMG_9104.jpg" alt="Zviera"></div>
         </div>
 
         <!-- 03 / OSTATNÉ -->
-        <div class="category-title" id="cat-other-title">03 / OSTATNÉ</div>
+        <div class="category-title" id="cat-other-title" onclick="toggleCategory(this)">03 / OSTATNÉ</div>
         <div class="photo-grid">
-            <div class="photo-item">
-                <img src="photos/other/IMG_1666.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/other/IMG_1662.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/other/IMG_1640.jpg" loading="lazy">
-            </div>
-            <div class="photo-item">
-                <img src="photos/other/_DSC1719.jpg" loading="lazy">
-            </div>
+            <div class="photo-item"><img data-src="photos/other/IMG_1666.jpg" alt="Ostatné"></div>
+            <div class="photo-item"><img data-src="photos/other/IMG_1662.jpg" alt="Ostatné"></div>
+            <div class="photo-item"><img data-src="photos/other/IMG_1640.jpg" alt="Ostatné"></div>
+            <div class="photo-item"><img data-src="photos/other/_DSC1719.jpg" alt="Ostatné"></div>
         </div>
 
     </section>
 
-    <!-- JAVASCRIPT PRE PREPÍNANIE JAZYKA -->
+    <!-- JAVASCRIPT PRE ROZBAĽOVANIE A PREPÍNANIE JAZYKA -->
     <script>
+        // --- FUNKCIA PRE ROZBAĽOVANIE KATEGÓRIÍ A LAZY LOADING ---
+        function toggleCategory(header) {
+            const grid = header.nextElementSibling;
+            if (!grid || !grid.classList.contains('photo-grid')) return;
+
+            header.classList.toggle('active');
+            grid.classList.toggle('active');
+
+            // Ak sa kategória rozbaľuje, načítame v nej fotky
+            if (grid.classList.contains('active')) {
+                const lazyImages = grid.querySelectorAll('img[data-src]');
+                lazyImages.forEach(img => {
+                    img.src = img.getAttribute('data-src');
+                    img.removeAttribute('data-src');
+                });
+            }
+        }
+
+        // --- PREPÍNANIE JAZYKA ---
         let currentLang = 'sk';
 
         const translations = {
@@ -631,8 +613,6 @@
                 title: 'Vi<span class="fancy-char">t</span>ajte',
                 about: 'Zameriavam sa primárne na <strong>fotenie áut</strong>, ale nemám problém s akýmkoľvek <strong>iným štýlom alebo žánrom</strong> – rád nafotím aj iné projekty podľa tvojich predstáv. Ak máš záujem o fotenie áut alebo hľadáš fotografa pre svoj projekt, stačí mi napísať na mail alebo na sociálne siete a dohodneme sa.',
                 btnMail: "Napíš mi",
-                verLabel: "VERZIA /",
-                byLabel: "DESIGN EXECUTED",
                 photoTag: "AUTOR / FOTOGRAF",
                 workTitle: "FOTOTVORBA",
                 workSubtitle: "VISUAL GALLERY",
@@ -645,8 +625,6 @@
                 title: 'Welc<span class="fancy-char">o</span>me',
                 about: 'I focus primarily on <strong>car photography</strong>, but I have no problem with any <strong>other style or genre</strong> – I will gladly shoot other projects according to your ideas. If you are interested in car photography or looking for a photographer, email me or reach out on social media.',
                 btnMail: "Contact me",
-                verLabel: "VERSION /",
-                byLabel: "DESIGN EXECUTED",
                 photoTag: "AUTHOR / PHOTOGRAPHER",
                 workTitle: "PORTFOLIO",
                 workSubtitle: "VISUAL GALLERY",
@@ -669,8 +647,6 @@
             document.getElementById('txt-title').innerHTML = t.title;
             document.getElementById('txt-about').innerHTML = t.about;
             document.getElementById('txt-btn-mail').innerText = t.btnMail;
-            document.getElementById('txt-ver-label').innerText = t.verLabel;
-            document.getElementById('txt-by-label').innerText = t.byLabel;
             document.getElementById('txt-photo-tag').innerText = t.photoTag;
             document.getElementById('txt-work-title').innerText = t.workTitle;
             document.getElementById('txt-work-subtitle').innerText = t.workSubtitle;
