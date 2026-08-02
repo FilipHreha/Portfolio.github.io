@@ -27,17 +27,17 @@
         }
 
         body {
-    background-color: var(--bg-black);
-    background-image:
-        radial-gradient(circle at 50% 30%, #353b45 0%, #16181d 40%, #08080a 75%),
-        radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
-    background-size: 100% 100%, 28px 28px;
-    background-attachment: fixed;
-    color: var(--text-white);
-    font-family: 'Space Grotesk', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
+            background-color: var(--bg-black);
+            background-image:
+                radial-gradient(circle at 50% 30%, #353b45 0%, #16181d 40%, #08080a 75%),
+                radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
+            background-size: 100% 100%, 28px 28px;
+            background-attachment: fixed;
+            color: var(--text-white);
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
         /* --- HORNA LIŠTA A LANGUAGE SWITCHER --- */
 
@@ -120,7 +120,7 @@
             transform-origin: right top;
         }
 
-         /* --- HERO SEKCIA --- */
+        /* --- HERO SEKCIA --- */
         .hero-container {
             min-height: 90vh;
             max-width: 1100px;
@@ -143,7 +143,7 @@
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: clamp(55px, 8.5vw, 115px);
-            font-weight: 900; /* BOLD NADPIS */
+            font-weight: 900;
             line-height: 1.1;
             letter-spacing: -0.01em;
             position: relative;
@@ -161,7 +161,7 @@
             color: var(--accent-green);
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-weight: 900; /* BOLD PRE AKCENTNÉ PÍSMENO */
+            font-weight: 900;
             font-size: 1.05em;
             display: inline-block;
             transform: translateY(2px) scaleX(1.1);
@@ -204,7 +204,7 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             text-decoration: none;
-            transiuion: all 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .btn-action.btn-primary {
@@ -255,11 +255,10 @@
             justify-content: center;
         }
 
-        /* ZVÄČŠENÁ KARTA S FOTKOU */
         .portrait-card {
             position: relative;
             width: 100%;
-            max-width: 480px; /* Zväčšené z 380px */
+            max-width: 480px;
             aspect-ratio: 1 / 1;
             border-radius: 18px;
             overflow: hidden;
@@ -275,7 +274,6 @@
             transform: rotate(1deg) translateY(-5px);
         }
 
-        /* ODSTRÁNENÝ ČIERNOBIELY FILTER */
         .portrait-img {
             width: 100%;
             height: 100%;
@@ -309,7 +307,7 @@
 
         /* --- SEKCIA FOTOTVORBA (MASONRY LAYOUT) --- */
         .showcase-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 100px 20px;
             border-top: 1px solid var(--border-light);
@@ -360,56 +358,37 @@
         }
 
         .photo-grid {
-            column-count: 2;
-            column-gap: 24px;
+            column-count: 3;
+            column-gap: 20px;
         }
 
         .photo-item {
             break-inside: avoid;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             position: relative;
             background-color: #0f1013;
             border: 1px solid var(--border-light);
             border-radius: 12px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .photo-item.full-width {
-            column-span: all;
-        }
-
-        .photo-item.landscape {
-            aspect-ratio: 16 / 10;
-        }
-
-        .photo-item.portrait {
-            aspect-ratio: 4 / 5;
-        }
-
-        .photo-item.full-width {
-            aspect-ratio: 21 / 9;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .photo-item:hover {
             border-color: rgba(0, 255, 102, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
 
-     /* ODSTRÁNENÝ ČIERNOBIELY FILTER z GALÉRIE */
         .photo-item img {
             width: 100%;
-            height: 100%;
+            height: auto;
             display: block;
-            object-fit: cover;
-            filter: contrast(100%);
-            transition: filter 0.5s ease, transform 0.6s ease;
+            object-fit: contain;
+            transition: transform 0.5s ease;
         }
 
         .photo-item:hover img {
-            filter: contrast(105%);
-            transform: scale(1.04);
+            transform: scale(1.02);
         }
 
         .photo-number {
@@ -428,412 +407,271 @@
         }
 
         .upcoming-category {
-
             margin-top: 80px;
-
             padding: 50px 20px;
-
             border: 1px dashed var(--border-light);
-
             border-radius: 16px;
-
             text-align: center;
-
             background: rgba(255, 255, 255, 0.01);
-
         }
-
-
 
         .upcoming-category h3 {
-
             font-size: 18px;
-
             font-weight: 500;
-
             letter-spacing: 0.15em;
-
             text-transform: uppercase;
-
             color: var(--text-muted);
-
             margin-bottom: 8px;
-
         }
-
-
 
         .upcoming-category p {
-
             font-size: 12px;
-
             color: rgba(128, 133, 144, 0.6);
-
         }
-
-
 
         /* --- FOOTER --- */
 
         .bottom-bar {
-
             width: 100%;
-
             padding: 30px 40px;
-
             display: flex;
-
             justify-content: center;
-
             gap: 20px;
-
             font-size: 11px;
-
             letter-spacing: 0.2em;
-
             text-transform: uppercase;
-
             color: var(--text-muted);
-
             border-top: 1px solid var(--border-light);
-
         }
-
-
 
         /* --- RESPONSIVITA --- */
 
         @media (max-width: 900px) {
-
             .side-text { display: none; }
-
             .top-bar { padding: 15px 20px; }
-
-           
-
+            
             .hero-container {
-
                 grid-template-columns: 1fr;
-
                 text-align: center;
-
                 gap: 40px;
-
                 padding-top: 110px;
-
             }
-
-
 
             .hero-content { align-items: center; }
 
-
-
             .main-title {
-
                 font-size: clamp(48px, 14vw, 75px);
-
                 padding-right: 5px;
-
             }
-
-
 
             .about-snippet { max-width: 100%; font-size: 14px; }
-
             .cta-buttons { justify-content: center; }
 
-
-
             .portrait-card {
-
-                max-width: 360px; /* Zväčšené na mobiloch z 300px */
-
+                max-width: 360px;
                 transform: rotate(1.5deg);
-
             }
 
-
-
-            .photo-grid { column-count: 1; }
-
-            .photo-item.full-width { aspect-ratio: 16 / 10; }
-
-            .photo-item.portrait { aspect-ratio: 3 / 4; }
-
+            .photo-grid { column-count: 2; }
         }
 
+        @media (max-width: 550px) {
+            .photo-grid { column-count: 1; }
+        }
     </style>
-
 </head>
-
 <body>
 
-
-
     <!-- Horná lišta -->
-
     <div class="top-bar">
-
         <div><span class="green-dot"></span><span id="txt-status">K DISPOZÍCII PRE PROJEKTY</span></div>
-
-       
-
+        
         <div class="lang-switch" onclick="toggleLanguage()">
-
             <div id="btn-sk" class="lang-btn active">SK</div>
-
             <div id="btn-en" class="lang-btn">EN</div>
-
         </div>
-
     </div>
 
-
-
     <div class="side-text side-left">+ POETRY IN DESIGN</div>
-
     <div class="side-text side-right">VISUAL STORYTELLER +</div>
 
-
-
     <!-- Hero Sekcia s Fotkou -->
-
     <main class="hero-container">
-
         <div class="hero-content">
-
             <h1 class="main-title" id="txt-title">
-
                 Vi<span class="fancy-char">t</span>ajte
-
             </h1>
 
-
-
             <p class="about-snippet" id="txt-about">
-
                 Zameriavam sa primárne na <strong>fotenie áut</strong>, ale nemám problém s akýmkoľvek <strong>iným štýlom alebo žánrom</strong> – rád nafotím aj iné projekty podľa tvojich predstáv. Ak máš záujem o fotenie áut alebo hľadáš fotografa pre svoj projekt, stačí mi napísať na mail alebo na sociálne siete a dohodneme sa.
-
             </p>
 
-
-
             <div class="cta-buttons">
-
                 <a href="mailto:filllip.hh@gmail.com" class="btn-action btn-primary">
-
                     <span>✉</span> <span id="txt-btn-mail">Napíš mi</span>
-
                 </a>
-
                 <a href="https://www.instagram.com/hubvroomvroom/" target="_blank" rel="noopener" class="btn-action">
-
                     <span>↗</span> Instagram
-
                 </a>
-
             </div>
-
-
 
             <div class="hero-footer-info">
-
                 <div>
-
                     <span style="color: var(--text-muted);" id="txt-ver-label">VERZIA /</span>
-
                     <span style="color: var(--accent-green); font-weight: 600;">2026</span>
-
                 </div>
-
                 <div style="display: flex; align-items: center; gap: 10px;">
-
                     <span class="arrow-circle">↗</span>
-
                     <div>
-
                         <div style="color: var(--text-muted); font-size: 10px;" id="txt-by-label">DESIGN EXECUTED</div>
-
                         <div class="designer-name"><span style="font-style: italic; font-weight: 300;">by</span> Filip Hreha</div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
-
 
         <div class="portrait-wrapper">
-
             <div class="portrait-card">
-
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" class="portrait-img" alt="Tvoja Fotka">
-
                 <div class="portrait-tag">
-
                     <span style="width: 6px; height: 6px; background: var(--accent-green); border-radius: 50%;"></span>
-
                     <span id="txt-photo-tag">AUTOR / FOTOGRAF</span>
-
                 </div>
-
             </div>
-
         </div>
-
     </main>
 
-
-
     <!-- SEKCIA FOTOTVORBA -->
-
     <section class="showcase-container">
-
-       
-
+        
         <div class="section-header-centered">
-
             <h2 id="txt-work-title">FOTOTVORBA</h2>
-
             <p id="txt-work-subtitle">VISUAL GALLERY</p>
-
         </div>
-
-
 
         <div class="category-title" id="cat-cars-title">01 / AUTOMOBILY</div>
 
-
-
         <div class="photo-grid">
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_0007.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_0007.jpg" loading="lazy" alt="Auto 01">
                 <div class="photo-number">01 / 24</div>
             </div>
 
-        <div class="photo-grid">
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_0170.png">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_0170.png" loading="lazy" alt="Auto 02">
                 <div class="photo-number">02 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_0199.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_0199.jpg" loading="lazy" alt="Auto 03">
                 <div class="photo-number">03 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_0205.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_0205.jpg" loading="lazy" alt="Auto 04">
                 <div class="photo-number">04 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_0850.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_0850.jpg" loading="lazy" alt="Auto 05">
                 <div class="photo-number">05 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_0877.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_0877.jpg" loading="lazy" alt="Auto 06">
                 <div class="photo-number">06 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_0909.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_0909.jpg" loading="lazy" alt="Auto 07">
                 <div class="photo-number">07 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1130.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1130.jpg" loading="lazy" alt="Auto 08">
                 <div class="photo-number">08 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_1152.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1152.jpg" loading="lazy" alt="Auto 09">
                 <div class="photo-number">09 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_1167.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1167.jpg" loading="lazy" alt="Auto 10">
                 <div class="photo-number">10 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_1168.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1168.jpg" loading="lazy" alt="Auto 11">
                 <div class="photo-number">11 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1206.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1206.jpg" loading="lazy" alt="Auto 12">
                 <div class="photo-number">12 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1242.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1242.jpg" loading="lazy" alt="Auto 13">
                 <div class="photo-number">13 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1405.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1405.jpg" loading="lazy" alt="Auto 14">
                 <div class="photo-number">14 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1463.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1463.jpg" loading="lazy" alt="Auto 15">
                 <div class="photo-number">15 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_1472.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1472.jpg" loading="lazy" alt="Auto 16">
                 <div class="photo-number">16 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_1554.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1554.jpg" loading="lazy" alt="Auto 17">
                 <div class="photo-number">17 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1557.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1557.jpg" loading="lazy" alt="Auto 18">
                 <div class="photo-number">18 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1787.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1787.jpg" loading="lazy" alt="Auto 19">
                 <div class="photo-number">19 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1818.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1818.jpg" loading="lazy" alt="Auto 20">
                 <div class="photo-number">20 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_1880.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_1880.jpg" loading="lazy" alt="Auto 21">
                 <div class="photo-number">21 / 24</div>
             </div>
 
-            <div class="photo-item landscape">
-                <img src="photos/cars/IMG_9984.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_9984.jpg" loading="lazy" alt="Auto 22">
                 <div class="photo-number">22 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_9991.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_9991.jpg" loading="lazy" alt="Auto 23">
                 <div class="photo-number">23 / 24</div>
             </div>
 
-            <div class="photo-item portrait">
-                <img src="photos/cars/IMG_9996.jpg">
+            <div class="photo-item">
+                <img src="photos/cars/IMG_9996.jpg" loading="lazy" alt="Auto 24">
                 <div class="photo-number">24 / 24</div>
             </div>
-
         </div>
-
-
 
         <div class="upcoming-category">
             <h3 id="txt-cat-animals">02 / FOTKY ZVIERAT</h3>
@@ -879,7 +717,7 @@
             en: {
                 status: "AVAILABLE FOR FREELANCE",
                 title: 'Welc<span class="fancy-char">o</span>me',
-                about: 'I focus primarily on <strong >automotive photography </strong>, but I have no problem with <strong> other styles or genres</strong> – I’m happy to shoot different projects based on your needs. If you are interested in a photoshoot or need a photographer for your project, just send me a message and we can work something out.',
+                about: 'I focus primarily on <strong>automotive photography</strong>, but I have no problem with <strong>other styles or genres</strong> – I’m happy to shoot different projects based on your needs. If you are interested in a photoshoot or need a photographer for your project, just send me a message and we can work something out.',
                 btnMail: "Get in touch",
                 verLabel: "VERSION /",
                 byLabel: "DESIGN EXECUTED",
@@ -914,8 +752,6 @@
             document.getElementById('txt-cat-others').innerText = t.catOthers;
             document.getElementById('txt-cat-others-sub').innerText = t.catOthersSub;
         }
-        
     </script>
 </body>
-</html> 
-
+</html>
