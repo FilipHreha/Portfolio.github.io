@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acid Portfolio</title>
+  <!-- Moderné brutalistické / technické písma z Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* 1. Základné nastavenia a farebná paleta */
+    :root {
+      --bg-color: #050505;
+      --card-red: #d90429;
+      --card-white: #e6e6e6;
+      --card-dark: #121212;
+      --text-dark: #0a0a0a;
+      --text-light: #f1f1f1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-light);
+      font-family: 'Space Mono', monospace;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* 2. Mriežka kariet (2 stĺpce) */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    /* 3. Štýl karty (Acid Style) */
+    .card {
+      position: relative;
+      height: 380px;
+      border-radius: 24px;
+      padding: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Varianty farieb kariet */
+    .card.dark { background-color: var(--card-dark); color: var(--text-light); }
+    .card.white { background-color: var(--card-white); color: var(--text-dark); }
+    .card.red { background-color: var(--card-red); color: var(--text-dark); }
+
+    /* Pozadie karty s vlastnou fotografiou */
+    .card-img-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25; /* Prispôsob priehľadnosť fotky podľa potreby */
+      mix-blend-mode: luminosity; /* Dodá fotke umelecký efekt */
+      z-index: 0;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* 4. Typografia a grafické prvnky */
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .badge {
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .meta-code {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.9;
+      word-break: break-all;
+    }
+
+    .sub-title {
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-top: 5px;
+    }
+
+    .kanji-text {
+      position: absolute;
+      right: 0;
+      top: 20%;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      writing-mode: vertical-rl;
+      opacity: 0.85;
+      user-select: none;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* 5. Spodný veľký banner */
+    .banner {
+      background-color: var(--card-red);
+      color: var(--text-dark);
+      border-radius: 24px;
+      padding: 30px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .banner-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Mriežka s projektmi / fotkami -->
+    <div class="grid-container">
+
+      <!-- Karta 1: Tmavá -->
+      <div class="card dark">
+        <!-- Ak chceš použiť vlastnú fotku na pozadie, odkomentuj riadok nižšie: -->
+        <!-- <img src="tvoja-fotka1.jpg" class="card-img-bg" alt="Photo"> -->
+        <div class="card-content">
+          <div class="card-header">
+            <span class="meta-code">NUCLEAR<br>MATTER</span>
+            <div class="badge">夜</div>
+          </div>
+          <div class="kanji-text">湮滅</div>
+          <div>
+            <h2 class="main-title">ANNIHILA-TION</h2>
+          </div>
+          <div class="card-footer">
+            <span>9102</span>
+            <span>2026 // EXP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Karta 2: Biela -->
+      <div class="card white">
+        <div class="card-content">
+          <div class="card-header">
+            <div class="badge">火</div>
+            <span class="meta-code">2026 // 01</span>
+          </div>
+          <div class="kanji-text">池火</div>
+          <div>
+            <h2 class="main-title">FIRE</h2>
+            <p class="sub-title">NUCLEAR - MATTER -</p>
+          </div>
+          <div class="card-footer">
+            <span>VOL. 04</span>
+            <span>BY THE COMMAND</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Karta 3: Červená -->
+      <div class="card red">
+        <div class="card-content">
+          <div class="card-header">
+            <div class="badge">核</div>
+            <span class="meta-code">SYSTEM_ALT</span>
+          </div>
+          <div class="kanji-text">聚變</div>
+          <div>
+            <h2 class="main-title">FUSION</h2>
+          </div>
+          <div class="card-footer">
+            <span>NCTR-MTR</span>
+            <span>INDEX: 992</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Karta 4: Biela (Light Grid) -->
+      <div class="card white">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="meta-code">2026</span>
+            <span class="meta-code">THUNDE</span>
+          </div>
+          <div class="kanji-text">天雷</div>
+          <div>
+            <h2 class="main-title">THUNDER</h2>
+          </div>
+          <div class="card-footer">
+            <span>[RAW_FILE]</span>
+            <div class="badge">夜</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Spodný hlavný banner -->
+    <div class="banner">
+      <div class="banner-meta">
+        <span>FUSION // 2026</span>
+        <span>TRACES OF ARTIFACTS</span>
+      </div>
+      <h1>NUCLEAR MATTER</h1>
+      <div class="banner-meta">
+        <span>PORTFOLIO SHOWCASE</span>
+        <span>/// ALL RIGHTS RESERVED</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
