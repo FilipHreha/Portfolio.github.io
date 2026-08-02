@@ -28,10 +28,12 @@
 
         body {
             background-color: var(--bg-black);
-            background-image:
-                radial-gradient(circle at 50% 30%, #353b45 0%, #16181d 40%, #08080a 75%),
-                radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
-            background-size: 100% 100%, 28px 28px;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0),
+                url('background_style.webp');
+            background-size: 28px 28px, cover;
+            background-position: center;
+            background-repeat: repeat, no-repeat;
             background-attachment: fixed;
             color: var(--text-white);
             font-family: 'Space Grotesk', sans-serif;
@@ -255,7 +257,6 @@
             justify-content: center;
         }
 
-        /* ODSTRÁNENÉ VŠETKY ANIMÁCIE A HOVER EFEKTY PRE KARTU */
         .portrait-card {
             position: relative;
             width: 100%;
@@ -266,21 +267,15 @@
             border: 1px solid var(--border-light);
             background: #0f1013;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-            /* Statické natočenie */
             transform: rotate(3.5deg);
         }
-
-        /* ODSTRÁNENÉ PÔVODNÉ .portrait-card:hover */
 
         .portrait-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: contrast(105%);
-            /* Odstránené transition */
         }
-
-        /* ODSTRÁNENÉ PÔVODNÉ .portrait-card:hover .portrait-img */
 
         .portrait-tag {
             position: absolute;
@@ -464,7 +459,6 @@
 
             .portrait-card {
                 max-width: 360px;
-                /* Statické natočenie pre menšie obrazovky */
                 transform: rotate(1.5deg);
             }
 
@@ -639,10 +633,16 @@
             </div>
 
             <div class="photo-item">
-                <img src="photos/cars/IMG_1787.jpg" loading="lazy" alt="Auto 19">
+                <img src="photos/cars/IMG_1785.jpg" loading="lazy" alt="Auto 19">
                 <div class="photo-number">19 / 24</div>
             </div>
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1818.jpg" loading="lazy" alt="Auto 20">
-                <div class="photo-number">20
+                <div class="photo-number">20 / 24</div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
