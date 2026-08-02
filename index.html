@@ -26,26 +26,24 @@
             scroll-behavior: smooth;
         }
 
-        /* Hlavné pozadie webu - čistá tmavá farba s jemnou bodkovanou sieťou */
+        /* 1. Hlavné pozadie stránky (bez bodiek, iba plynulý gradient ako pôvodne) */
         body {
             background-color: var(--bg-black);
-            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
-            background-size: 28px 28px;
-            background-repeat: repeat;
+            background-image: linear-gradient(180deg, #0d0e12 0%, #08080a 100%);
+            background-attachment: fixed;
             color: var(--text-white);
             font-family: 'Space Grotesk', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* --- OBAL PRE HERO SEKCIU S OBRÁZKOVÝM POZADÍM --- */
+        /* 2. Hero sekcia s grafickým pozadím a kratším, jemnejším prechodom do tmy na spodku */
         .hero-section-wrapper {
             position: relative;
             width: 100%;
-            /* Plynulý prechod z priehľadného obalu do úplnej tmy na spodku */
             background-image: 
-                linear-gradient(to bottom, rgba(8, 8, 10, 0.2) 0%, rgba(8, 8, 10, 0.7) 70%, var(--bg-black) 100%),
-                url('background2.webp');
+                linear-gradient(to bottom, rgba(8, 8, 10, 0.1) 0%, rgba(8, 8, 10, 0.4) 80%, #0d0e12 100%),
+                url('background_style.webp');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
@@ -136,7 +134,7 @@
             min-height: 90vh;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 140px 20px 80px;
+            padding: 140px 20px 60px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
@@ -304,11 +302,11 @@
             gap: 8px;
         }
 
-        /* --- SEKCIA FOTOTVORBA (ČISTÉ TMAVÉ POZADIE) --- */
+        /* --- SEKCIA FOTOTVORBA (ČISTÝ GRADIENT Z BODY) --- */
         .showcase-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px 100px;
+            padding: 50px 20px 100px;
             position: relative;
             z-index: 2;
         }
@@ -470,7 +468,7 @@
     <div class="side-text side-left">+ POETRY IN DESIGN</div>
     <div class="side-text side-right">VISUAL STORYTELLER +</div>
 
-    <!-- HERO SEKCIA OBBALENÁ V POZADÍ -->
+    <!-- HERO SEKCIA S GRAFICKÝM POZADÍM -->
     <header class="hero-section-wrapper">
         <main class="hero-container">
             <div class="hero-content">
@@ -518,7 +516,7 @@
         </main>
     </header>
 
-    <!-- SEKCIA FOTOTVORBA (ČISTÉ POZADIE) -->
+    <!-- SEKCIA FOTOTVORBA (NA GRADIENTNOM POZADÍ CELÉHO WEBU) -->
     <section class="showcase-container">
         
         <div class="section-header-centered">
