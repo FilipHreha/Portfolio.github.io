@@ -255,6 +255,7 @@
             justify-content: center;
         }
 
+        /* ODSTRÁNENÉ VŠETKY ANIMÁCIE A HOVER EFEKTY PRE KARTU */
         .portrait-card {
             position: relative;
             width: 100%;
@@ -265,27 +266,21 @@
             border: 1px solid var(--border-light);
             background: #0f1013;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            /* Statické natočenie */
             transform: rotate(3.5deg);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .portrait-card:hover {
-            border-color: rgba(0, 255, 102, 0.4);
-            transform: rotate(3.5deg);
-        }
+        /* ODSTRÁNENÉ PÔVODNÉ .portrait-card:hover */
 
         .portrait-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: contrast(105%);
-            transition: filter 0.5s ease, transform 0.6s ease;
+            /* Odstránené transition */
         }
 
-        .portrait-card:hover .portrait-img {
-            filter: contrast(110%);
-            transform: scale(1.03);
-        }
+        /* ODSTRÁNENÉ PÔVODNÉ .portrait-card:hover .portrait-img */
 
         .portrait-tag {
             position: absolute;
@@ -469,6 +464,7 @@
 
             .portrait-card {
                 max-width: 360px;
+                /* Statické natočenie pre menšie obrazovky */
                 transform: rotate(1.5deg);
             }
 
@@ -532,7 +528,7 @@
 
         <div class="portrait-wrapper">
             <div class="portrait-card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" class="portrait-img" alt="Tvoja Fotka">
+                <img src="profil.png" class="portrait-img">
                 <div class="portrait-tag">
                     <span style="width: 6px; height: 6px; background: var(--accent-green); border-radius: 50%;"></span>
                     <span id="txt-photo-tag">AUTOR / FOTOGRAF</span>
@@ -649,109 +645,4 @@
 
             <div class="photo-item">
                 <img src="photos/cars/IMG_1818.jpg" loading="lazy" alt="Auto 20">
-                <div class="photo-number">20 / 24</div>
-            </div>
-
-            <div class="photo-item">
-                <img src="photos/cars/IMG_1880.jpg" loading="lazy" alt="Auto 21">
-                <div class="photo-number">21 / 24</div>
-            </div>
-
-            <div class="photo-item">
-                <img src="photos/cars/IMG_9984.jpg" loading="lazy" alt="Auto 22">
-                <div class="photo-number">22 / 24</div>
-            </div>
-
-            <div class="photo-item">
-                <img src="photos/cars/IMG_9991.jpg" loading="lazy" alt="Auto 23">
-                <div class="photo-number">23 / 24</div>
-            </div>
-
-            <div class="photo-item">
-                <img src="photos/cars/IMG_9996.jpg" loading="lazy" alt="Auto 24">
-                <div class="photo-number">24 / 24</div>
-            </div>
-        </div>
-
-        <div class="upcoming-category">
-            <h3 id="txt-cat-animals">02 / FOTKY ZVIERAT</h3>
-            <p id="txt-cat-animals-sub">PRIPRAVUJE SA</p>
-        </div>
-
-        <div class="upcoming-category" style="margin-top: 30px;">
-            <h3 id="txt-cat-others">03 / OSTATNÉ</h3>
-            <p id="txt-cat-others-sub">PRIPRAVUJE SA</p>
-        </div>
-
-    </section>
-
-    <!-- Footer -->
-    <footer class="bottom-bar">
-        <span>TURNS</span>
-        <span>CHAOS</span>
-        <span style="color: var(--accent-green);">/</span>
-        <span>INTO ART</span>
-    </footer>
-
-    <!-- SK / EN JS -->
-    <script>
-        let currentLang = 'sk';
-        const translations = {
-            sk: {
-                status: "K DISPOZÍCII PRE PROJEKTY",
-                title: 'Vi<span class="fancy-char">t</span>ajte',
-                about: 'Zameriavam sa primárne na <strong>fotenie áut</strong>, ale nemám problém s akýmkoľvek <strong>iným štýlom alebo žánrom</strong> – rád nafotím aj iné projekty podľa tvojich predstáv. Ak máš záujem o fotenie áut alebo hľadáš fotografa pre svoj projekt, stačí mi napísať na mail alebo na sociálne siete a dohodneme sa.',
-                btnMail: "Napíš mi",
-                verLabel: "VERZIA /",
-                byLabel: "DESIGN EXECUTED",
-                photoTag: "AUTOR / FOTOGRAF",
-                workTitle: "FOTOTVORBA",
-                workSubtitle: "VISUAL GALLERY",
-                catCars: "01 / AUTOMOBILY",
-                catAnimals: "02 / FOTKY ZVIERAT",
-                catAnimalsSub: "PRIPRAVUJE SA",
-                catOthers: "03 / OSTATNÉ",
-                catOthersSub: "PRIPRAVUJE SA"
-            },
-
-            en: {
-                status: "AVAILABLE FOR FREELANCE",
-                title: 'Welc<span class="fancy-char">o</span>me',
-                about: 'I focus primarily on <strong>automotive photography</strong>, but I have no problem with <strong>other styles or genres</strong> – I’m happy to shoot different projects based on your needs. If you are interested in a photoshoot or need a photographer for your project, just send me a message and we can work something out.',
-                btnMail: "Get in touch",
-                verLabel: "VERSION /",
-                byLabel: "DESIGN EXECUTED",
-                photoTag: "CREATOR / PHOTOGRAPHER",
-                workTitle: "PHOTOGRAPHY",
-                workSubtitle: "VISUAL GALLERY",
-                catCars: "01 / AUTOMOTIVE",
-                catAnimals: "02 / ANIMALS",
-                catAnimalsSub: "COMING SOON",
-                catOthers: "03 / OTHER",
-                catOthersSub: "COMING SOON"
-            }
-        };
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'sk' ? 'en' : 'sk';
-            document.getElementById('btn-sk').classList.toggle('active', currentLang === 'sk');
-            document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
-            const t = translations[currentLang];
-            document.getElementById('txt-status').innerText = t.status;
-            document.getElementById('txt-title').innerHTML = t.title;
-            document.getElementById('txt-about').innerHTML = t.about;
-            document.getElementById('txt-btn-mail').innerText = t.btnMail;
-            document.getElementById('txt-ver-label').innerText = t.verLabel;
-            document.getElementById('txt-by-label').innerText = t.byLabel;
-            document.getElementById('txt-photo-tag').innerText = t.photoTag;
-            document.getElementById('txt-work-title').innerText = t.workTitle;
-            document.getElementById('txt-work-subtitle').innerText = t.workSubtitle;
-            document.getElementById('cat-cars-title').innerText = t.catCars;
-            document.getElementById('txt-cat-animals').innerText = t.catAnimals;
-            document.getElementById('txt-cat-animals-sub').innerText = t.catAnimalsSub;
-            document.getElementById('txt-cat-others').innerText = t.catOthers;
-            document.getElementById('txt-cat-others-sub').innerText = t.catOthersSub;
-        }
-    </script>
-</body>
-</html>
+                <div class="photo-number">20
