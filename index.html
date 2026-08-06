@@ -472,6 +472,154 @@
         @media (max-width: 550px) {
             .photo-grid { column-count: 1; }
         }
+
+
+        /* ZÁKLADNÝ LAYOUT SEKCIE */
+.tech-section {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  height: 70vh;
+  background: #08080a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 0 5%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* TEXT VĽAVO */
+.tech-text-content {
+  flex: 1;
+  max-width: 450px;
+  z-index: 2;
+  padding-right: 20px;
+}
+
+.tech-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  letter-spacing: -0.02em;
+}
+
+.tech-description {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #808590;
+  font-weight: 300;
+}
+
+/* OBAL PRE MARQUEE (ŠIKMÝ SKLON + STRATENIE NA OKRAJOCH) */
+.tech-marquee-wrapper {
+  flex: 1.2;
+  height: 140%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-15deg) scale(1.1);
+  
+  /* Maskovanie pre plynulé stratenie fotiek na vrchu a spodku */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.tech-marquee-container {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+/* STĹPCE */
+.marquee-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+/* KARTY / OBRÁZKY */
+.marquee-card {
+  width: 100%;
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #15161b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.marquee-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ANIMÁCIE POHYBU (BEZ ZASTAVENIA PRI HOVERI) */
+.move-up {
+  animation: scrollUp 22s linear infinite;
+}
+
+.move-down {
+  animation: scrollDown 25s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVITA PRE MOBILY */
+@media (max-width: 900px) {
+  .tech-section {
+    flex-direction: column;
+    height: auto;
+    padding: 60px 20px;
+  }
+
+  .tech-text-content {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .tech-marquee-wrapper {
+    width: 120%;
+    height: 400px;
+    transform: rotate(-8deg);
+  }
+
+  .marquee-column {
+    width: 140px;
+  }
+
+  .marquee-card {
+    height: 180px;
+  }
+}
     </style>
 </head>
 <body>
@@ -522,6 +670,57 @@
             </div>
         </main>
     </header>
+
+    <!-- Rotation grid -->
+<section class="tech-section">
+  <!-- Ľavá časť s textom -->
+  <div class="tech-text-content">
+    <h2 class="tech-title">TECHNIKA</h2>
+    <p class="tech-description">
+      Používam profesionálnu fototechniku a objektívy na zachytenie najlepších detailov, svetla a atmosféry každého momentu.
+    </p>
+  </div>
+
+  <!-- Pravá časť s rotujúcimi/posúvajúcimi sa fotkami -->
+  <div class="tech-marquee-wrapper">
+    <div class="tech-marquee-container">
+      
+      <!-- Stĺpec 1 (Pohyb nahor) -->
+      <div class="marquee-column move-up">
+        <div class="marquee-card"><img src="photos/cars/IMG_0007.jpg" alt="Technika 1"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_0170.png" alt="Technika 2"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_0199.jpg" alt="Technika 3"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_0205.jpg" alt="Technika 4"></div>
+        <!-- Duplikáty pre nekonečný plynulý scroll -->
+        <div class="marquee-card"><img src="photos/cars/IMG_0007.jpg" alt="Technika 1"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_0170.png" alt="Technika 2"></div>
+      </div>
+
+      <!-- Stĺpec 2 (Pohyb nadol) -->
+      <div class="marquee-column move-down">
+        <div class="marquee-card"><img src="photos/cars/IMG_0850.jpg" alt="Technika 5"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_0877.jpg" alt="Technika 6"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_0909.jpg" alt="Technika 7"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_1130.jpg" alt="Technika 8"></div>
+        <!-- Duplikáty -->
+        <div class="marquee-card"><img src="photos/cars/IMG_0850.jpg" alt="Technika 5"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_0877.jpg" alt="Technika 6"></div>
+      </div>
+
+      <!-- Stĺpec 3 (Pohyb nahor) -->
+      <div class="marquee-column move-up">
+        <div class="marquee-card"><img src="photos/cars/IMG_1152.jpg" alt="Technika 9"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_1167.jpg" alt="Technika 10"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_1206.jpg" alt="Technika 11"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_1242.jpg" alt="Technika 12"></div>
+        <!-- Duplikáty -->
+        <div class="marquee-card"><img src="photos/cars/IMG_1152.jpg" alt="Technika 9"></div>
+        <div class="marquee-card"><img src="photos/cars/IMG_1167.jpg" alt="Technika 10"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- SEKCIA FOTOTVORBA -->
     <section class="showcase-container">
