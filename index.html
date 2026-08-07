@@ -459,6 +459,37 @@
             font-weight: 300;
         }
 
+        .tech-list {
+            list-style: none;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tech-list li {
+            font-size: 15px;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .tech-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            min-width: 90px;
+        }
+
+        .tech-list strong {
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
         .tech-marquee-wrapper {
             flex: 1.2;
             height: 140%;
@@ -535,6 +566,10 @@
                 margin-bottom: 40px;
             }
 
+            .tech-list li {
+                justify-content: center;
+            }
+
             .tech-marquee-wrapper {
                 width: 120%;
                 height: 400px;
@@ -592,7 +627,8 @@
         </main>
     </header>
 
-    <section class="tech-section">
+    <!-- Sekcia Technika -->
+    <section class="tech-section" id="tech">
         <div class="tech-text-content">
             <h2 class="tech-title" id="txt-tech-title">TECHNIKA</h2>
             <p class="tech-description" id="txt-tech-desc">
@@ -719,16 +755,16 @@
                 about: 'Zameriavam sa primárne na <strong>fotenie áut</strong>, ale nemám problém s akýmkoľvek <strong>iným štýlom alebo žánrom</strong> – rád nafotím aj iné projekty podľa tvojich predstáv. Ak máš záujem o fotenie áut alebo hľadáš fotografa pre svoj projekt, stačí mi napísať na mail alebo na sociálne siete a dohodneme sa.',
                 btnMail: "Napíš mi",
                 photoTag: "AUTOR / FOTOGRAF",
+                techTitle: "TECHNIKA",
+                techDesc: "Technika, ktorú používam:",
+                lblBody: "Telo:",
+                lblLenses: "Objektívy:",
+                lblDrone: "Dron:",
                 workTitle: "FOTOTVORBA",
                 workSubtitle: "VISUAL GALLERY",
                 catCars: "01 / AUTOMOBILY",
                 catAnimals: "02 / ZVIERATÁ",
                 catOther: "03 / OSTATNÉ"
-                techTitle: "TECHNIKA",
-                techDesc: "Technika, ktorú používam:",
-                lblBody: "Telo:",
-                lblLenses: "Objektívy:",
-                lblDrone: "Dron:"
             },
             en: {
                 status: "AVAILABLE FOR PROJECTS",
@@ -736,16 +772,16 @@
                 about: 'I focus primarily on <strong>car photography</strong>, but I have no problem with any <strong>other style or genre</strong> – I will gladly shoot other projects according to your ideas. If you are interested in car photography or looking for a photographer, email me or reach out on social media.',
                 btnMail: "Contact me",
                 photoTag: "AUTHOR / PHOTOGRAPHER",
+                techTitle: "EQUIPMENT",
+                techDesc: "Equipment I use:",
+                lblBody: "Camera:",
+                lblLenses: "Lenses:",
+                lblDrone: "Drone:",
                 workTitle: "PORTFOLIO",
                 workSubtitle: "VISUAL GALLERY",
                 catCars: "01 / AUTOMOBILES",
                 catAnimals: "02 / ANIMALS",
                 catOther: "03 / OTHER"
-                techTitle: "EQUIPMENT",
-                techDesc: "Equipment I use:",
-                lblBody: "Camera:",
-                lblLenses: "Lenses:",
-                lblDrone: "Drone:"
             }
         };
 
@@ -761,6 +797,11 @@
             document.getElementById('txt-about').innerHTML = t.about;
             document.getElementById('txt-btn-mail').innerText = t.btnMail;
             document.getElementById('txt-photo-tag').innerText = t.photoTag;
+            document.getElementById('txt-tech-title').innerText = t.techTitle;
+            document.getElementById('txt-tech-desc').innerText = t.techDesc;
+            document.getElementById('lbl-body').innerText = t.lblBody;
+            document.getElementById('lbl-lenses').innerText = t.lblLenses;
+            document.getElementById('lbl-drone').innerText = t.lblDrone;
             document.getElementById('txt-work-title').innerText = t.workTitle;
             document.getElementById('txt-work-subtitle').innerText = t.workSubtitle;
             document.getElementById('cat-cars-title').innerText = t.catCars;
